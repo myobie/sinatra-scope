@@ -1,0 +1,21 @@
+PATH
+  remote: .
+  specs:
+    sinatra-scope (0.0.1)
+      sinatra (~> 1.0.0)
+
+GEM
+  specs:
+    rack (1.2.1)
+    rack-test (0.5.6)
+      rack (>= 1.0)
+    sinatra (1.0)
+      rack (>= 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rack-test
+  sinatra (~> 1.0.0)
+  sinatra-scope!
