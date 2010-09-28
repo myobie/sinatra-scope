@@ -12,6 +12,7 @@ require 'contest'
 require 'rack/test'
 require 'sinatra/base'
 require 'sinatra/scope'
+require 'sinatra/resource'
 
 class Sinatra::Base
   # Allow assertions in request context
@@ -21,6 +22,7 @@ end
 # App that includes resource/member helpers
 class ScopeApp < Sinatra::Base
   register Sinatra::Scope
+  register Sinatra::Resource
 end
 
 Sinatra::Base.set :environment, :test

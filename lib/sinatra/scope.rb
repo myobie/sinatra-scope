@@ -3,7 +3,7 @@ module Sinatra
 
     [:get, :post, :put, :delete, :head].each do |verb|
       class_eval <<-EOT
-        def #{verb}(path = nil, options = {}, &block)
+        def #{verb}(path = '', options = {}, &block)
           super(full_path(path), options, &block)
         end
       EOT
@@ -30,4 +30,6 @@ module Sinatra
     end
 
   end
+
+  register Scope
 end

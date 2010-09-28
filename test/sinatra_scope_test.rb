@@ -232,28 +232,4 @@ class ScopeTest < Test::Unit::TestCase
     assert_equal 'bar', body
   end
 
-  it 'keeps helpers inside the scope' do
-    mock_app {
-      scope "something" do
-        helpers do
-          def foo
-            "bar"
-          end
-        end
-
-        get "/foo" do
-          foo
-        end
-      end
-
-      get "/foo" do
-        foo
-      end
-    }
-
-    assert_raise(NoMethodError) {
-      get '/foo'
-    }
-  end
-
 end
