@@ -248,4 +248,20 @@ class ScopeTest < Test::Unit::TestCase
     assert_equal "destroyd page 1", body
   end
 
+  it 'supports using a class as a resource' do
+    class Page; end
+
+    mock_app {
+      resource Page do
+        _new do
+          "Create a new page?"
+        end
+      end
+    }
+
+    get "/pages/new"
+    assert ok?
+    assert_equal "Create a new page?", body
+  end
+
 end

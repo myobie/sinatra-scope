@@ -14,4 +14,5 @@ spec = Gem::Specification.new do |s|
   s.homepage = "http://github.com/myobie/sinatra-scope"
   s.requirements << 'sinatra'
   s.add_dependency('sinatra', '~> 1.0.0')
+  s.add_dependency('activesupport', '~> 3.0.0')
 end

@@ -232,4 +232,52 @@ class ScopeTest < Test::Unit::TestCase
     assert_equal 'bar', body
   end
 
+  it 'supports using a class as a scope' do
+    class Page; end
+
+    mock_app {
+      scope Page do
+        get "/hello" do
+          "hello back!"
+        end
+      end
+    }
+
+    get "/pages/hello"
+    assert ok?
+    assert_equal 'hello back!', body
+  end
+
+  it 'supports using a class as a scope (singular)' do
+    class Page; end
+
+    mock_app {
+      scope Page, :singular => true do
+        get "/hello" do
+          "hello back!"
+        end
+      end
+    }
+
+    get "/page/hello"
+    assert ok?
+    assert_equal 'hello back!', body
+  end
+
+  it 'supports using a class as a scope (keep full name)' do
+    class Page; end
+
+    mock_app {
+      scope Page, :full_classname => true do
+        get "/hello" do
+          "hello back!"
+        end
+      end
+    }
+
+    get "/scope-test/pages/hello"
+    assert ok?
+    assert_equal 'hello back!', body
+  end
+
 end
