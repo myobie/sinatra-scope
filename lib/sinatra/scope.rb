@@ -22,20 +22,21 @@ module Sinatra
       else
         path = path.to_s
       end
-      (@path_parts ||= []) << path
+
+      (@scopes ||= []) << path
       block.call
-      @path_parts.pop
+      @scopes.pop
     end
 
   protected
     def full_path(path)
-      return path if @path_parts.nil? || @path_parts.empty?
+      return path if @scopes.nil? || @scopes.empty?
       
       case path
       when String, Symbol
-        "/" + @path_parts.join("/") + path.to_s
+        "/" + @scopes.join("/") + path.to_s
       when Regexp
-        Regexp.new(Regexp.escape("/" + @path_parts.join("/")) + path.source)
+        Regexp.new(Regexp.escape("/" + @scopes.join("/")) + path.source)
       else
         path
       end

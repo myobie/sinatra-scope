@@ -13,16 +13,19 @@ require 'rack/test'
 require 'sinatra/base'
 require 'sinatra/scope'
 require 'sinatra/resource'
+require 'sinatra/urls'
 
 class Sinatra::Base
   # Allow assertions in request context
   include Test::Unit::Assertions
 end
 
-# App that includes resource/member helpers
+# App that includes scope helpers
 class ScopeApp < Sinatra::Base
   register Sinatra::Scope
   register Sinatra::Resource
+  register Sinatra::UrlScope
+  helpers Sinatra::UrlHelpers
 end
 
 Sinatra::Base.set :environment, :test

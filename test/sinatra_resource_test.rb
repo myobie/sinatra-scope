@@ -1,6 +1,6 @@
 require File.expand_path 'helper', File.dirname(__FILE__)
 
-class ScopeTest < Test::Unit::TestCase
+class ResourceTest < Test::Unit::TestCase
 
   it 'supports the resource method' do
     mock_app {
