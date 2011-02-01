@@ -44,5 +44,7 @@ module Sinatra
 
   end
 
-  register Scope
+  class Base
+    register Scope
+  end
 end

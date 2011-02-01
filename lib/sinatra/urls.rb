@@ -24,7 +24,9 @@ module Sinatra
 
   end
 
-  register UrlScope
+  class Base
+    register UrlScope
+  end
 
   module UrlHelpers
 
@@ -34,5 +36,7 @@ module Sinatra
 
   end
 
-  helpers UrlHelpers
+  class Base
+    helpers UrlHelpers
+  end
 end

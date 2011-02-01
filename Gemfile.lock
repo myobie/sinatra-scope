@@ -3,11 +3,14 @@ PATH
   specs:
     sinatra-scope (0.0.1)
       activesupport (~> 3.0.0)
+      i18n (~> 0.5.0)
       sinatra (~> 1.0.0)
 
 GEM
+  remote: http://rubygems.org/
   specs:
-    activesupport (3.0.0)
+    activesupport (3.0.3)
+    i18n (0.5.0)
     rack (1.2.1)
     rack-test (0.5.6)
       rack (>= 1.0)
@@ -18,7 +21,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 3.0.0)
   rack-test
-  sinatra (~> 1.0.0)
   sinatra-scope!

@@ -66,5 +66,7 @@ module Sinatra
 
   end
 
-  register Resource
+  class Base
+    register Resource
+  end
 end
