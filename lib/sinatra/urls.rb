@@ -18,7 +18,7 @@ module Sinatra
 
   module UrlScope
 
-    def scope(path, options = {}, &block)
+    def scope(path = '', options = {}, &block)
       UrlTracker.add(super, @scopes, options)
     end
 
