@@ -13,7 +13,7 @@ spec = Gem::Specification.new do |s|
   s.email = "nathan@myobie.com"
   s.homepage = "http://github.com/myobie/sinatra-scope"
   s.requirements << 'sinatra'
-  s.add_dependency('sinatra', '~> 1.0.0')
+  s.add_dependency('sinatra')
   s.add_dependency('activesupport', '~> 3.0.0')
   s.add_dependency('i18n', '~> 0.5.0')
 end
