@@ -45,6 +45,7 @@ module Sinatra
 
   end
 
+  public
   class Base
     register Scope
   end
