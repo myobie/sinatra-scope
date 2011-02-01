@@ -1,5 +1,6 @@
 require 'active_support/core_ext/string/inflections'
 require 'active_support/inflections'
+require 'sinatra/base'
 
 module Sinatra
   module Scope
