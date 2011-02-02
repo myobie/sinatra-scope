@@ -6,11 +6,9 @@ module Sinatra
   module Scope
 
     [:get, :post, :put, :delete, :head].each do |verb|
-      class_eval <<-EOT
-        def #{verb}(path = '', options = {}, &block)
-          super(full_path(path), options, &block)
-        end
-      EOT
+      define_method verb do |path = '', options = {}, &block|
+        super(full_path(path), options, &block)
+      end
     end
 
     def scope(path, options = {}, &block)
