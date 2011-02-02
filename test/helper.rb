@@ -22,10 +22,10 @@ end
 
 # App that includes scope helpers
 class ScopeApp < Sinatra::Base
-  # register Sinatra::Scope
-  # register Sinatra::Resource
-  # register Sinatra::UrlScope
-  # helpers Sinatra::UrlHelpers
+  register Sinatra::Scope
+  register Sinatra::Resource
+  register Sinatra::UrlScope
+  helpers Sinatra::UrlHelpers
 end
 
 Sinatra::Base.set :environment, :test

@@ -30,7 +30,7 @@ module Sinatra
   protected
     def full_path(path)
       return path if @scopes.nil? || @scopes.empty?
-      
+
       case path
       when String, Symbol
         "/" + @scopes.join("/") + path.to_s
@@ -43,7 +43,4 @@ module Sinatra
 
   end
 
-  class Base
-    register Scope
-  end
 end

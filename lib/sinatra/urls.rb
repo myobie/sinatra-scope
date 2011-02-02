@@ -24,10 +24,6 @@ module Sinatra
 
   end
 
-  class Base
-    register UrlScope
-  end
-
   module UrlHelpers
 
     def url(name, *args)
@@ -36,7 +32,4 @@ module Sinatra
 
   end
 
-  class Base
-    helpers UrlHelpers
-  end
 end
