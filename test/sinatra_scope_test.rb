@@ -16,7 +16,7 @@ class ScopeTest < Test::Unit::TestCase
     assert_equal "/admin/login works", response.body
   end
 
-  %w[get put post delete].each do |verb|
+  %w[get put patch post delete].each do |verb|
     it "defines #{verb.upcase} request handlers with #{verb}" do
       mock_app {
         send verb, '/hello' do
@@ -31,7 +31,7 @@ class ScopeTest < Test::Unit::TestCase
     end
   end
 
-  %w[get put post delete].each do |verb|
+  %w[get put post patch delete].each do |verb|
     it "defines scoped #{verb.upcase} request handlers with #{verb}" do
       mock_app {
         scope "something" do
@@ -278,6 +278,23 @@ class ScopeTest < Test::Unit::TestCase
     get "/scope-test/pages/hello"
     assert ok?
     assert_equal 'hello back!', body
+  end
+
+  it "supports scoped before" do
+    mock_app {
+      get("foo") { @text.to_s + "foo" }
+      scope :bar do
+        before { @text = "baz" }
+        get { @text.to_s + "bar" }
+      end
+    }
+    get "/foo"
+    assert ok?
+    assert_equal "foo", body
+
+    get "/bar"
+    assert ok?
+    assert_equal "bazbar", body
   end
 
 end

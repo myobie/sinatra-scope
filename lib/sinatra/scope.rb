@@ -5,8 +5,14 @@ require 'sinatra/base'
 module Sinatra
   module Scope
 
-    [:get, :post, :put, :delete, :head].each do |verb|
+    [:get, :post, :patch, :put, :delete, :head, :options].each do |verb|
       define_method verb do |path = '', options = {}, &block|
+        super(full_path(path), options, &block)
+      end
+    end
+
+    [:before, :after].each do |action|
+      define_method action do |path = '', options = {}, &block|
         super(full_path(path), options, &block)
       end
     end
@@ -15,9 +21,9 @@ module Sinatra
       case path
       when Class
         path = path.name
-        path = path.demodulize unless options.delete(:full_classname)
+        path = path.demodulize unless options[:full_classname]
         path = path.underscore.dasherize
-        path = path.pluralize unless options.delete(:singular)
+        path = path.pluralize unless options[:singular]
       else
         path = path.to_s
       end
@@ -29,16 +35,18 @@ module Sinatra
 
   protected
     def full_path(path)
-      return path if @scopes.nil? || @scopes.empty?
-
       case path
       when String, Symbol
-        "/" + @scopes.join("/") + path.to_s
+        ("/" + (@scopes || []).join("/") + path.to_s).squeeze("/")
       when Regexp
-        Regexp.new(Regexp.escape("/" + @scopes.join("/")) + path.source)
+        Regexp.new(Regexp.escape("/" + (@scopes || []).join("/")) + path.source)
       else
         path
       end
+    end
+
+    def path_name(path)
+      full_path(path).gsub(/^\//, '')
     end
 
   end
