@@ -297,4 +297,15 @@ class ScopeTest < Test::Unit::TestCase
     assert_equal "bazbar", body
   end
 
+  it "supports multiple scopes at once" do
+    mock_app {
+      scopes :admin, :pages do
+        get { "hello there" }
+      end
+    }
+    get "/admin/pages"
+    assert ok?
+    assert_equal "hello there", body
+  end
+
 end

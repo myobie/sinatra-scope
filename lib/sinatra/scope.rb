@@ -33,6 +33,17 @@ module Sinatra
       @scopes.pop
     end
 
+    def scopes(*paths, &block)
+      @scopes ||= []
+      paths.each do |path|
+        @scopes << path.to_s
+      end
+      block.call
+      paths.each do |path|
+        @scopes.pop
+      end
+    end
+
   protected
     def full_path(path)
       case path
