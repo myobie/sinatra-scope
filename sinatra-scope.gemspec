@@ -1,6 +1,6 @@
 spec = Gem::Specification.new do |s|
   s.name = 'sinatra-scope'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.summary = "Simple nested routes for Sinatra"
   s.description = %{Simple nested routes for Sinatra.}
   s.files = Dir['lib/**/*.rb'] + Dir['test/**/*.rb']
