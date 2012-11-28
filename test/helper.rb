@@ -10,7 +10,7 @@ $LOAD_PATH.unshift libdir unless $LOAD_PATH.include?(libdir)
 
 require 'contest'
 require 'rack/test'
-require 'sinatra/scope'
+require 'sinatra-scope'
 
 class Sinatra::Base
   # Allow assertions in request context
