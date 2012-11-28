@@ -10,10 +10,7 @@ $LOAD_PATH.unshift libdir unless $LOAD_PATH.include?(libdir)
 
 require 'contest'
 require 'rack/test'
-require 'sinatra/base'
 require 'sinatra/scope'
-require 'sinatra/resource'
-require 'sinatra/urls'
 
 class Sinatra::Base
   # Allow assertions in request context
@@ -23,9 +20,6 @@ end
 # App that includes scope helpers
 class ScopeApp < Sinatra::Base
   register Sinatra::Scope
-  register Sinatra::Resource
-  register Sinatra::UrlScope
-  helpers Sinatra::UrlHelpers
 end
 
 Sinatra::Base.set :environment, :test
